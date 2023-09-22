@@ -1,0 +1,92 @@
+<div class="container">
+  <form [formGroup]="register">
+
+    <div *ngIf="successmsg" id="validcolor">
+      <p>Successfully registerd!!!</p>
+    </div>
+    <br />
+    <label style="font-style: italic">Employee Registration</label><br /><br />
+    <code>{{ item }} </code><br />
+    <label
+      >Name
+      <input
+        type="text"
+        class="form-control"
+        formControlName="empname"
+        required
+    /></label>
+    <br /><br />
+    <div id="showcolor">
+      <div
+        *ngIf="
+          (register.get('empname')?.invalid &&
+            register.get('empname')?.dirty) ||
+          register.get('empname')?.touched
+        "
+      >
+        *Mandatory Field
+      </div>
+      <div *ngIf="register.get('empname')?.errors?.['maxlength']">
+        Sorry you are exceeding the limit
+      </div>
+      <div *ngIf="register.get('empname')?.errors?.['pattern']">
+        Please type character only
+      </div>
+      <div *ngIf="register.get('empname')?.errors?.['minlength']">
+        your name should contain atleast 4 characters
+      </div>
+    </div>
+
+    <label
+      >Salary
+      <input
+        type="text"
+        class="form-control"
+        formControlName="empsalary"
+        required
+    /></label>
+    <br /><br />
+    <div id="showcolor">
+      <div
+        *ngIf="
+          (register.get('empsalary')?.invalid &&
+            register.get('empsalary')?.dirty) ||
+          register.get('empsalary')?.touched
+        "
+      >
+        *Mandatory Field
+      </div>
+      <div *ngIf="register.get('empsalary')?.errors?.['max']">
+        Sorry you are exceeding the limit
+      </div>
+      <div *ngIf="register.get('empsalary')?.errors?.['min']">
+        you Salary should contain atleast 4 numbers
+      </div>
+    </div>
+
+    <label
+      >Age
+      <input type="text" class="form-control" formControlName="empage" required
+    /></label>
+    <br /><br />
+    <div id="showcolor">
+      <div
+        *ngIf="
+          (register.get('empage')?.invalid && register.get('empage')?.dirty) ||
+          register.get('empage')?.touched
+        "
+      >
+        *Mandatory Field
+      </div>
+      <div *ngIf="register.get('empage')?.errors?.['max']">
+        Sorry you are exceeding the limit
+      </div>
+      <div *ngIf="register.get('empage')?.errors?.['min']">
+        Please type the proper age
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="SubmitForm()">
+      Send
+    </button>
+  </form>
+</div>

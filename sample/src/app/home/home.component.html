@@ -1,0 +1,67 @@
+<mat-toolbar color="primary">
+  <span>My Application</span>
+</mat-toolbar>
+<code> Count: {{ showCount }} </code>
+<!-- <header>
+    <h2>Cities</h2>
+  </header> -->
+
+<section>
+  <nav>
+    <button mat-mini-fab color="warn">=</button>
+    <ul>
+      <li><a href="/home">Home</a> &nbsp;</li>
+      <br />
+      <li><a href="/list">Employee List</a>&nbsp;</li>
+      <br />
+      <li><a href="/add">Add Employee</a>&nbsp;</li>
+      <br />
+    </ul>
+  </nav>
+
+  <article>
+    <h1>London</h1>
+    <p>
+      London is the capital city of England. It is the most populous city in the
+      United Kingdom, with a metropolitan area of over 13 million inhabitants.
+    </p>
+    <p>
+      Standing on the River Thames, London has been a major settlement for two
+      millennia, its history going back to its founding by the Romans, who named
+      it Londinium.
+    </p>
+  </article>
+  <br />
+  <input
+    type="text"
+    placeholder="Enter any text.."
+    #parentMessage
+  />&nbsp;&nbsp;
+  <button
+    type="button"
+    class="btn btn-info"
+    (click)="broadcastMessage(parentMessage.value)"
+  >
+    Try broadcast Message
+  </button>
+  <hr />
+  <tr>
+    <td style="width: 70%;padding-left: 20%;">
+      <app-addemployee
+        [item]="parentMessage.value"
+        (onChanged)="countChanged($event)"
+      ></app-addemployee>
+    </td>
+    <br />
+    <td>
+      <app-employeelist
+        [item]="parentMessage.value"
+        (onChanged)="countChanged($event)"
+      ></app-employeelist>
+    </td>
+  </tr>
+</section>
+
+<footer>
+  <p>Footer</p>
+</footer>
